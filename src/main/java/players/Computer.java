@@ -26,7 +26,7 @@ public class Computer extends Players {
 
     @Override
     public Optional<Weapon> selectWeapon() {
-        int weaponId = randomGenerator.nextInt(NUMBER_OF_WEAPONS) + 1;
+        final int weaponId = randomGenerator.nextInt(NUMBER_OF_WEAPONS) + 1;
         return Weapon.of(weaponId);
     }
 }

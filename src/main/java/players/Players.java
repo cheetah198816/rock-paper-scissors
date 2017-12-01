@@ -32,7 +32,7 @@ public abstract class Players {
     public void checkWin(Players playerTwo) {
         if (this.getWeapon() != null && playerTwo.getWeapon() != null) {
             if (!this.getWeapon().getWeaponType().equals(playerTwo.getWeapon().getWeaponType())) {
-                Optional<Weapon> weapon = this.getWeapon().compareWeapons(playerTwo.getWeapon().getWeaponType());
+                final Optional<Weapon> weapon = this.getWeapon().compareWeapons(playerTwo.getWeapon().getWeaponType());
                 if (weapon.isPresent()) {
                     System.out.println(playerTwo.getName() + " wins over " + this.getName());
                 } else {

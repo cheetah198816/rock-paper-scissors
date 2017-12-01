@@ -15,15 +15,15 @@ public class User extends Players {
     @Override
     public void getUserDetails() {
         System.out.println( "Please enter your name");
-        Scanner scanner = new Scanner(System.in);
-        String userName = scanner.nextLine();
+        final Scanner scanner = new Scanner(System.in);
+        final String userName = scanner.nextLine();
         setName(userName);
     }
 
     @Override
     public Optional<Weapon> selectWeapon() {
-        Scanner scanner = new Scanner(System.in);
-        int weaponType = scanner.nextInt();
+        final Scanner scanner = new Scanner(System.in);
+        final int weaponType = scanner.nextInt();
         return Weapon.of(weaponType);
     }
 }
