@@ -22,7 +22,7 @@ public class GameImpl implements Game {
 
     private WeaponFactory weaponFactory;
 
-    public GameImpl(ModeFactory modeFactory, WeaponFactory weaponFactory) {
+    public GameImpl(final ModeFactory modeFactory, final WeaponFactory weaponFactory) {
         this.modeFactory = modeFactory;
         this.weaponFactory = weaponFactory;
     }
@@ -34,12 +34,12 @@ public class GameImpl implements Game {
             try {
                 System.out.println("Please select the mode");
                 Arrays.stream(PlayMode.values()).forEach(e -> System.out.println(e.getMode() + " " + e.getDescription()));
-                Scanner modeScanner = new Scanner(System.in);
-                int mode = modeScanner.nextInt();
-                Optional<PlayMode> playMode = PlayMode.of(mode);
+                final Scanner modeScanner = new Scanner(System.in);
+                final int mode = modeScanner.nextInt();
+                final Optional<PlayMode> playMode = PlayMode.of(mode);
                 if (playMode.isPresent()) {
-                    Mode modeObject = modeFactory.getMode(playMode.get());
-                    Players[] players = modeObject.getPlayers();
+                    final Mode modeObject = modeFactory.getMode(playMode.get());
+                    final Players[] players = modeObject.getPlayers();
                     Arrays.stream(players).forEach(player -> setPlayers(player));
                     players[0].checkWin(players[1]);
                 } else {
@@ -49,7 +49,7 @@ public class GameImpl implements Game {
                 System.out.println("Wrong Input.Game Ends.");
             }
             System.out.println("Do you want to play another game?(y/n)");
-            Scanner scanner = new Scanner(System.in);
+            final Scanner scanner = new Scanner(System.in);
             decision = scanner.nextLine();
         } while (decision.equals("y"));
     }
@@ -64,10 +64,10 @@ public class GameImpl implements Game {
         System.out.println("Player : " + player.getName());
         System.out.println("Please select the weapon below :");
         Arrays.stream(Weapon.values()).forEach(weapon -> System.out.println(weapon.getId() + " " + weapon.getDescription()));
-        Optional<Weapon> weapon = player.selectWeapon();
+        final Optional<Weapon> weapon = player.selectWeapon();
         if (weapon.isPresent()) {
             System.out.println(player.getName() + " selected " + weapon.get().getDescription());
-            Weapons weapons = weaponFactory.getWeapon(weapon.get());
+            final Weapons weapons = weaponFactory.getWeapon(weapon.get());
             player.setWeapon(weapons);
         }
         return player;
