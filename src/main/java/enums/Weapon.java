@@ -7,7 +7,7 @@ import java.util.Optional;
  * Created by chetan on 29.11.2017.
  */
 public enum Weapon {
-    PAPER(1, "Paper"), SCISSORS(2, "Scissors"), ROCK(3, "Rock");
+    PAPER(1, "Paper"), SCISSORS(2, "Scissors"), ROCK(3, "Rock"), SPOCK(4, "Spock"), LIZARD(5, "Lizard");
 
     private int id;
 

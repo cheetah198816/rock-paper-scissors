@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class Computer extends Players {
 
-    public static final Integer NUMBER_OF_WEAPONS = 3;
+    public static final Integer NUMBER_OF_WEAPONS = 5;
 
     private Random randomGenerator = new Random();
 
