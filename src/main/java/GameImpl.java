@@ -35,7 +35,6 @@ public class GameImpl implements Game {
                 System.out.println("Please select the mode");
                 Arrays.stream(PlayMode.values()).forEach(e -> System.out.println(e.getMode() + " " + e.getDescription()));
                 Scanner modeScanner = new Scanner(System.in);
-
                 int mode = modeScanner.nextInt();
                 Optional<PlayMode> playMode = PlayMode.of(mode);
                 if (playMode.isPresent()) {
