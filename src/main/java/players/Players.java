@@ -2,7 +2,6 @@ package players;
 
 import enums.Weapon;
 import weapon.Weapons;
-import weaponfctry.WeaponFactory;
 
 import java.util.Optional;
 
@@ -15,18 +14,32 @@ public abstract class Players {
 
     private Weapons weapon;
 
-
+    /**
+     * Gets the user details like name.
+     */
     public abstract void getUserDetails();
 
+    /**
+     * selects the weapon for the current user.
+     * @return optional weapon
+     */
     public abstract Optional<Weapon> selectWeapon();
 
+    /**
+     * Checks the win of the current player with the second player.
+     * @param playerTwo playerTwo object
+     */
     public void checkWin(Players playerTwo) {
         if (this.getWeapon() != null && playerTwo.getWeapon() != null) {
-            Optional<Weapon> weapon = this.getWeapon().compareWeapons(playerTwo.getWeapon().getWeaponType());
-            if (weapon.isPresent()) {
-                System.out.println(playerTwo.getName() + " wins over " + this.getName());
+            if (!this.getWeapon().getWeaponType().equals(playerTwo.getWeapon().getWeaponType())) {
+                Optional<Weapon> weapon = this.getWeapon().compareWeapons(playerTwo.getWeapon().getWeaponType());
+                if (weapon.isPresent()) {
+                    System.out.println(playerTwo.getName() + " wins over " + this.getName());
+                } else {
+                    System.out.println(this.getName() + " wins over " + playerTwo.getName());
+                }
             } else {
-                System.out.println(this.getName() + " wins over " + playerTwo.getName());
+                System.out.println("Its a tie!!!!!!!!!!!!!!");
             }
         } else {
             System.out.println("Wrong Weapon selected.Game Ends.");

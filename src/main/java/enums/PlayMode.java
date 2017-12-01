@@ -13,19 +13,19 @@ public enum PlayMode {
 
     private Integer mode;
 
+    private String description;
+
+    PlayMode(Integer mode, String description) {
+        this.mode = mode;
+        this.description = description;
+    }
+
     public Integer getMode() {
         return mode;
     }
 
     public String getDescription() {
         return description;
-    }
-
-    private String description;
-
-    PlayMode(Integer mode, String description) {
-        this.mode = mode;
-        this.description = description;
     }
 
     public static Optional<PlayMode> of(int mode) {

@@ -11,14 +11,6 @@ public enum Weapon {
 
     private int id;
 
-    public int getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
     private String description;
 
     Weapon(int id , String description) {
@@ -28,6 +20,14 @@ public enum Weapon {
 
     public static Optional<Weapon> of(int id) {
         return Arrays.stream(values()).filter(weapon -> weapon.getId() == id).findAny();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
 }
