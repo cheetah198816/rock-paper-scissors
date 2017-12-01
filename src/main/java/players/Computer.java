@@ -1,22 +1,21 @@
 package players;
 
-import weaponfctry.WeaponFactory;
+import enums.Weapon;
+
+import java.util.Optional;
 
 /**
  * Created by chetan on 30.11.2017.
  */
 public class Computer extends Players {
 
-    public Computer(WeaponFactory weaponFactory) {
-        super(weaponFactory);
-    }
     @Override
     public void getUserDetails() {
         setName("Computer");
     }
 
     @Override
-    public void selectWeapon() {
-
+    public Optional<Weapon> selectWeapon() {
+        return null;
     }
 }

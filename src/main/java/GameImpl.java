@@ -1,8 +1,11 @@
 import enums.PlayMode;
+import enums.Weapon;
 import mode.Mode;
 import modefactory.ModeFactory;
 import modefactory.impl.ModeFactoryImpl;
 import players.Players;
+import weapon.Weapons;
+import weaponfctry.WeaponFactory;
 import weaponfctry.impl.WeaponFactoryImpl;
 
 import java.util.Arrays;
@@ -16,8 +19,11 @@ public class GameImpl implements Game {
 
     private ModeFactory modeFactory;
 
-    public GameImpl(ModeFactory modeFactory) {
+    private WeaponFactory weaponFactory;
+
+    public GameImpl(ModeFactory modeFactory, WeaponFactory weaponFactory) {
         this.modeFactory = modeFactory;
+        this.weaponFactory = weaponFactory;
     }
 
     @Override
@@ -32,9 +38,10 @@ public class GameImpl implements Game {
             if (playMode.isPresent()) {
                 Mode modeObject = modeFactory.getMode(playMode.get());
                 Players[] players = modeObject.getPlayers();
-                Players playerOne = setPlayers(players[0]);
-                Players playerTwo = setPlayers(players[1]);
-                playerOne.checkWin(playerTwo);
+                Arrays.stream(players).forEach(player -> setPlayers(player));
+                players[0].checkWin(players[1]);
+            } else {
+                System.out.println("Wrong Mode Selected.Game Ends.");
             }
             System.out.println("Do you want to play another game?(y/n)");
             Scanner scanner = new Scanner(System.in);
@@ -43,13 +50,18 @@ public class GameImpl implements Game {
     }
 
     public static void main(String [] args) {
-        Game game = new GameImpl(new ModeFactoryImpl(new WeaponFactoryImpl()));
+        Game game = new GameImpl(new ModeFactoryImpl(), new WeaponFactoryImpl());
         game.startGame();
     }
 
     public Players setPlayers(Players player) {
         player.getUserDetails();
         System.out.println("Player : " + player.getName());
+        Optional<Weapon> weapon = player.selectWeapon();
+        if (weapon.isPresent()) {
+            Weapons weapons = weaponFactory.getWeapon(weapon.get());
+            player.setWeapon(weapons);
+        }
         return player;
     }
 }

@@ -1,6 +1,7 @@
 package players;
 
 import enums.Weapon;
+import weapon.Weapons;
 import weaponfctry.WeaponFactory;
 
 import java.util.Optional;
@@ -11,10 +12,6 @@ import java.util.Scanner;
  */
 public class User extends Players {
 
-    public User(WeaponFactory weaponFactory) {
-        super(weaponFactory);
-    }
-
     @Override
     public void getUserDetails() {
         System.out.println( "Please enter your name");
@@ -24,13 +21,9 @@ public class User extends Players {
     }
 
     @Override
-    public void selectWeapon() {
-        System.out.println("Please select weapon");
+    public Optional<Weapon> selectWeapon() {
         Scanner scanner = new Scanner(System.in);
         int weaponType = scanner.nextInt();
-        Optional<Weapon> weapon = Weapon.of(weaponType);
-        if (weapon.isPresent()) {
-
-        }
+        return Weapon.of(weaponType);
     }
 }
