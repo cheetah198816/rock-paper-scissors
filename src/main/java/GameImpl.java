@@ -59,7 +59,7 @@ public class GameImpl implements Game {
         game.startGame();
     }
 
-    public Players setPlayers(Players player) {
+    private Players setPlayers(Players player) {
         player.getUserDetails();
         System.out.println("Player : " + player.getName());
         System.out.println("Please select the weapon below :");

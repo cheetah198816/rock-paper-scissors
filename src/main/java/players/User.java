@@ -1,8 +1,6 @@
 package players;
 
 import enums.Weapon;
-import weapon.Weapons;
-import weaponfctry.WeaponFactory;
 
 import java.util.Optional;
 import java.util.Scanner;
@@ -14,7 +12,7 @@ public class User extends Players {
 
     @Override
     public void getUserDetails() {
-        System.out.println( "Please enter your name");
+        System.out.println("Please enter your name");
         final Scanner scanner = new Scanner(System.in);
         final String userName = scanner.nextLine();
         setName(userName);
