@@ -36,7 +36,7 @@ public class RockPaperScissorsTest {
 
     @Test
     public void test_weapon_is_not_present() {
-        Optional<Weapon> weaponType = Weapon.of(5);
+        Optional<Weapon> weaponType = Weapon.of(6);
 
         assertThat(weaponType.isPresent()).isFalse();
     }
