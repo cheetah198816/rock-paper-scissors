@@ -19,6 +19,7 @@ public class Computer extends Players {
     public Computer(String computerName) {
         this.computerName = computerName;
     }
+
     @Override
     public void getUserDetails() {
         setName(computerName);

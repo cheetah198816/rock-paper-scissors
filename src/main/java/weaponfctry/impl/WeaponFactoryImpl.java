@@ -12,9 +12,12 @@ public class WeaponFactoryImpl implements WeaponFactory {
 
     public Weapons getWeapon(Weapon type) {
         switch (type) {
-            case ROCK: return new WeaponsImpl(type, Weapon.PAPER);
-            case PAPER: return new WeaponsImpl(type, Weapon.SCISSORS);
-            default: return new WeaponsImpl(type, Weapon.ROCK);
+            case ROCK:
+                return new WeaponsImpl(type, Weapon.PAPER);
+            case PAPER:
+                return new WeaponsImpl(type, Weapon.SCISSORS);
+            default:
+                return new WeaponsImpl(type, Weapon.ROCK);
         }
     }
 }

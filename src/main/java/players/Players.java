@@ -29,7 +29,7 @@ public abstract class Players {
      * Checks the win of the current player with the second player.
      * @param playerTwo playerTwo object
      */
-    public void checkWin(Players playerTwo) {
+    public boolean checkWin(Players playerTwo) {
         if (this.getWeapon() != null && playerTwo.getWeapon() != null) {
             if (!this.getWeapon().getWeaponType().equals(playerTwo.getWeapon().getWeaponType())) {
                 final Optional<Weapon> weapon = this.getWeapon().compareWeapons(playerTwo.getWeapon().getWeaponType());
@@ -37,6 +37,7 @@ public abstract class Players {
                     System.out.println(playerTwo.getName() + " wins over " + this.getName());
                 } else {
                     System.out.println(this.getName() + " wins over " + playerTwo.getName());
+                    return true;
                 }
             } else {
                 System.out.println("Its a tie!!!!!!!!!!!!!!");
@@ -44,6 +45,7 @@ public abstract class Players {
         } else {
             System.out.println("Wrong Weapon selected.Game Ends.");
         }
+        return false;
     }
 
     public Weapons getWeapon() {
