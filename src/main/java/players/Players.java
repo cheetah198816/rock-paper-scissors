@@ -21,18 +21,22 @@ public abstract class Players {
 
     /**
      * selects the weapon for the current user.
+     *
      * @return optional weapon
      */
     public abstract Optional<Weapon> selectWeapon();
 
     /**
      * Checks the win of the current player with the second player.
+     *
      * @param playerTwo playerTwo object
      */
     public boolean checkWin(Players playerTwo) {
         if (this.getWeapon() != null && playerTwo.getWeapon() != null) {
-            if (!this.getWeapon().getWeaponType().equals(playerTwo.getWeapon().getWeaponType())) {
-                final Optional<Weapon> weapon = this.getWeapon().compareWeapons(playerTwo.getWeapon().getWeaponType());
+            final Weapon playerOneWeaponType = this.getWeapon().getWeaponType();
+            final Weapon playerTwoWeaponType = playerTwo.getWeapon().getWeaponType();
+            if (!playerOneWeaponType.equals(playerTwoWeaponType)) {
+                final Optional<Weapon> weapon = this.getWeapon().compareWeapons(playerTwoWeaponType);
                 if (weapon.isPresent()) {
                     System.out.println(playerTwo.getName() + " wins over " + this.getName());
                 } else {
