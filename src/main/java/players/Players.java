@@ -21,12 +21,14 @@ public abstract class Players {
 
     /**
      * selects the weapon for the current user.
+     *
      * @return optional weapon
      */
     public abstract Optional<Weapon> selectWeapon();
 
     /**
      * Checks the win of the current player with the second player.
+     *
      * @param playerTwo playerTwo object
      */
     public boolean checkWin(Players playerTwo) {
